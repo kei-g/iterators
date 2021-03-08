@@ -1,0 +1,24 @@
+{
+	"compilerOptions": {
+    "charset": "utf8",
+    "declaration": true,
+    "downlevelIteration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+		"lib": [ "ESNext" ],
+    "module": "CommonJS",
+		"moduleResolution": "node",
+    "newLine": "lf",
+    "outDir": "dist",
+    "pretty": true,
+    "removeComments": true,
+    "skipLibCheck": true,
+    "strict": true,
+		"target": "ES5",
+	},
+  "files": [
+    "./index.ts",
+    "./iterables.ts",
+    "./iterators.ts",
+  ],
+}

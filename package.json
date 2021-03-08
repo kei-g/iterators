@@ -1,0 +1,38 @@
+{
+  "author": {
+    "email": "km.8k6ce+npm@gmail.com",
+    "name": "kei-g"
+  },
+  "bugs": {
+    "url": "https://github.com/kei-g/iterators/issues"
+  },
+  "description": "Iterators Library",
+  "devDependencies": {
+    "@types/node": "^16.0.0",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.5"
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/kei-g/iterators",
+  "keywords": [
+    "iterator"
+  ],
+  "license": "BSD-3-Clause",
+  "main": "index.js",
+  "name": "@kei-g/iterators",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kei-g/iterators.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "test": "ts-node test.ts"
+  },
+  "version": "1.0.0"
+}
