@@ -18,7 +18,5 @@
 	},
   "files": [
     "./index.ts",
-    "./iterables.ts",
-    "./iterators.ts",
   ],
 }
