@@ -1,4 +1,4 @@
-import { ConcatenatedIterable } from './iterables'
+import { ConcatenatedIterable } from './index'
 
 const foo = [8, 3, 8, 8, 6, 1]
 const bar = [114, 514]
