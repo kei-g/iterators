@@ -20,7 +20,7 @@
     "iterator"
   ],
   "license": "BSD-3-Clause",
-  "main": "dist/index.js",
+  "main": "dist/iterators.js",
   "name": "@kei-g/iterators",
   "publishConfig": {
     "access": "public"
