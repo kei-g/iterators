@@ -10,7 +10,8 @@
   "devDependencies": {
     "@types/node": "^16.0.0",
     "ts-node": "^10.0.0",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "uglify-js": "^3.13.10"
   },
   "files": [
     "dist"
@@ -30,7 +31,7 @@
     "url": "https://github.com/kei-g/iterators.git"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && [ -d dist ] || mkdir dist && uglifyjs build/iterators.js --compress --mangle > dist/iterators.js && cp build/iterators.d.ts dist/",
     "prepublishOnly": "npm run build",
     "test": "ts-node test.ts"
   },
