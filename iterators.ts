@@ -49,7 +49,7 @@ export class SingleIterable<T> implements Iterable<T> {
 }
 
 export class SingleIterator<T> implements Iterator<T> {
-  private iterated: boolean = false
+  private iterated = false
 
   constructor(private readonly value: T) {
   }
