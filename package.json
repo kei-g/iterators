@@ -34,7 +34,7 @@
     "url": "https://github.com/kei-g/iterators.git"
   },
   "scripts": {
-    "build": "tsc && [ -d dist ] || mkdir dist && uglifyjs build/iterators.js --compress --mangle > dist/iterators.js && cp build/iterators.d.ts dist/",
+    "build": "npm run lint && tsc && [ -d dist ] || mkdir dist && uglifyjs build/iterators.js --compress --mangle > dist/iterators.js && cp build/iterators.d.ts dist/",
     "lint": "eslint *.ts",
     "prepublishOnly": "npm run build",
     "test": "ts-node test.ts"
