@@ -37,6 +37,7 @@
     "build": "npm run lint && tsc && npm run terser",
     "clean": "rm -fr build/ dist/",
     "lint": "eslint *.ts",
+    "postpublish": "npm run clean",
     "prepublishOnly": "npm run build",
     "terser": "[ -d dist ] || mkdir dist && terser build/iterators.js --compress --mangle > dist/iterators.js && cp build/iterators.d.ts dist/",
     "test": "ts-node test.ts"
