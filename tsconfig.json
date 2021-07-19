@@ -1,21 +1,21 @@
 {
-	"compilerOptions": {
+  "compilerOptions": {
     "charset": "utf8",
     "declaration": true,
     "downlevelIteration": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-		"lib": [ "ESNext" ],
+    "lib": [
+      "ES2015"
+    ],
     "module": "CommonJS",
-		"moduleResolution": "node",
+    "moduleResolution": "node",
     "newLine": "lf",
     "outDir": "build",
     "pretty": true,
     "removeComments": true,
     "skipLibCheck": true,
     "strict": true,
-		"target": "ES5",
-	},
+    "target": "ES5",
+  },
   "files": [
     "./iterators.ts",
   ],
