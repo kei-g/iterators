@@ -39,7 +39,7 @@
     "lint": "eslint *.ts",
     "postpublish": "npm run clean",
     "prepublishOnly": "npm run build",
-    "terser": "[ -d dist ] || mkdir dist && terser build/iterators.js --compress --mangle > dist/iterators.js && cp build/iterators.d.ts dist/",
+    "terser": "[ -d dist ] || mkdir dist && terser build/iterators.js -c -m -o dist/iterators.js --toplevel && cp build/iterators.d.ts dist/",
     "test": "ts-node test.ts"
   },
   "version": "1.1.0"
