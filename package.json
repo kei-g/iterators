@@ -42,5 +42,5 @@
     "terser": "[ -d dist ] || mkdir dist && terser build/iterators.js -c -m -o dist/iterators.js --toplevel && cp build/iterators.d.ts dist/",
     "test": "ts-node test.ts"
   },
-  "version": "1.1.0"
+  "version": "1.1.1"
 }
