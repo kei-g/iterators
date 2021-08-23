@@ -2,6 +2,7 @@
   "compilerOptions": {
     "charset": "utf8",
     "declaration": true,
+    "declarationDir": "lib",
     "downlevelIteration": true,
     "lib": [
       "ES2015"
@@ -14,9 +15,13 @@
     "removeComments": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "ES5",
+    "strictNullChecks": false,
+    "target": "ES6",
   },
   "files": [
-    "./iterators.ts",
+    "iterators.ts",
+  ],
+  "include": [
+    "iterators.ts",
   ],
 }
