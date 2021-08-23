@@ -18,6 +18,9 @@
     "target": "ES5",
   },
   "files": [
-    "./iterators.ts",
+    "iterators.ts",
+  ],
+  "include": [
+    "iterators.ts",
   ],
 }
