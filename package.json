@@ -44,5 +44,5 @@
     "terser": "terser build/iterators.js -c -m -o lib/iterators.js --toplevel",
     "test": "ts-node test.ts"
   },
-  "version": "1.1.1"
+  "version": "1.1.2"
 }
