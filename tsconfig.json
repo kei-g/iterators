@@ -26,6 +26,7 @@
     "src/lib/iterators.ts",
     "src/lib/multiplex.ts",
     "src/lib/single.ts",
+    "src/lib/transform.ts",
     "src/lib/zip.ts",
   ],
 }
