@@ -1,4 +1,9 @@
-import { EitherIterable, EitherIterator, isAsyncIterable, isIterable } from './iterators'
+import {
+  EitherIterable,
+  EitherIterator,
+  isAsyncIterable,
+  isIterable,
+} from './iterators'
 
 export class AsyncMultiplexer<T> implements AsyncIterable<T> {
   private readonly sources = {} as SourceE<T>

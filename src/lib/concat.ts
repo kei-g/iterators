@@ -24,7 +24,10 @@ export class ConcatenatedIterable<T> implements AsyncIterable<T>, Iterable<T> {
 
   private readonly source: Iterable<Iterable<T>>
 
-  constructor(sourceOrFirst: Iterable<Iterable<T>> | Iterable<T>, second?: Iterable<T>) {
+  constructor(
+    sourceOrFirst: Iterable<Iterable<T>> | Iterable<T>,
+    second?: Iterable<T>,
+  ) {
     this.source = typeof second === 'undefined'
       ? sourceOrFirst as Iterable<Iterable<T>>
       : [sourceOrFirst as Iterable<T>, second]
@@ -51,7 +54,10 @@ export class ConcatenatedIterator<T> implements Iterator<T> {
   private current: Iterator<T>
   private readonly source: Iterator<Iterator<T>>
 
-  constructor(sourceOrFirst: Iterator<Iterator<T>> | Iterator<T>, second?: Iterator<T>) {
+  constructor(
+    sourceOrFirst: Iterator<Iterator<T>> | Iterator<T>,
+    second?: Iterator<T>,
+  ) {
     this.source = typeof second === 'undefined'
       ? sourceOrFirst as Iterator<Iterator<T>>
       : [sourceOrFirst as Iterator<T>, second][Symbol.iterator]()
