@@ -5,7 +5,7 @@
     "declarationDir": ".",
     "downlevelIteration": true,
     "lib": [
-      "ES2015"
+      "ES2020"
     ],
     "module": "CommonJS",
     "moduleResolution": "node",
@@ -16,7 +16,7 @@
     "skipLibCheck": true,
     "strict": true,
     "strictNullChecks": false,
-    "target": "ES6",
+    "target": "ES2020",
   },
   "files": [
     "src/index.ts",
@@ -24,6 +24,7 @@
     "src/lib/concat.ts",
     "src/lib/empty.ts",
     "src/lib/iterators.ts",
+    "src/lib/linear-number-series.ts",
     "src/lib/multiplex.ts",
     "src/lib/single.ts",
     "src/lib/transform.ts",
