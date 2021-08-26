@@ -1,4 +1,7 @@
+**/*.d.ts
+**/*.js
 **/.vscode/
+**/bin/
 **/build/
 **/lib/
 **/node_modules/
