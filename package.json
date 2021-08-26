@@ -20,6 +20,8 @@
     "typescript": "^4.3.5"
   },
   "files": [
+    "index.js",
+    "index.d.ts",
     "lib"
   ],
   "homepage": "https://github.com/kei-g/iterators",
@@ -27,7 +29,7 @@
     "iterator"
   ],
   "license": "BSD-3-Clause",
-  "main": "lib/iterators.js",
+  "main": "index.js",
   "name": "@kei-g/iterators",
   "publishConfig": {
     "access": "public"
@@ -41,13 +43,16 @@
     "build:clean-and-lint": "run-p clean lint",
     "build:mkdir": "mkdirp lib",
     "build:mkdir-and-transpile": "run-p build:mkdir build:transpile",
-    "build:terser": "terser build/iterators.js -c -m -o lib/iterators.js --toplevel",
+    "build:terser": "run-p build:terser:*",
+    "build:terser:index": "terser build/index.js -c -m -o index.js --toplevel",
+    "build:terser:iterators": "terser build/lib/iterators.js -c -m -o lib/iterators.js --toplevel",
     "build:transpile": "tsc",
-    "clean": "rimraf build/ lib/",
-    "lint": "eslint *.ts",
+    "clean": "rimraf build/ index.d.ts index.js lib/",
+    "lint": "eslint src/lib/*.ts",
     "postpublish": "run-s clean",
     "prepublishOnly": "run-s build",
     "test": "ts-node test.ts"
   },
+  "types": "index.d.ts",
   "version": "1.1.0"
 }
