@@ -8,16 +8,20 @@
   },
   "description": "Iterators Library",
   "devDependencies": {
-    "@types/node": "^16.7.1",
-    "@typescript-eslint/eslint-plugin": "^4.29.2",
-    "@typescript-eslint/parser": "^4.29.2",
+    "@types/node": "^16.7.2",
+    "@typescript-eslint/eslint-plugin": "^4.29.3",
+    "@typescript-eslint/parser": "^4.29.3",
     "eslint": "^7.32.0",
+    "mkdirp": "^1.0.4",
+    "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2",
-    "terser": "^5.7.1",
+    "terser": "^5.7.2",
     "ts-node": "^10.2.1",
     "typescript": "^4.3.5"
   },
   "files": [
+    "index.js",
+    "index.d.ts",
     "lib"
   ],
   "homepage": "https://github.com/kei-g/iterators",
@@ -25,7 +29,7 @@
     "iterator"
   ],
   "license": "BSD-3-Clause",
-  "main": "lib/iterators.js",
+  "main": "index.js",
   "name": "@kei-g/iterators",
   "publishConfig": {
     "access": "public"
@@ -35,14 +39,28 @@
     "url": "https://github.com/kei-g/iterators.git"
   },
   "scripts": {
-    "build": "npm run lint && tsc && npm run terser",
-    "clean": "rimraf build/ lib/",
-    "lint": "eslint *.ts",
-    "postpublish": "npm run clean",
-    "prebuild": "rimraf build/ lib/",
-    "prepublishOnly": "npm run build",
-    "terser": "terser build/iterators.js -c -m -o lib/iterators.js --toplevel",
+    "build": "run-s build:clean-and-lint build:mkdir-and-transpile build:terser",
+    "build:clean-and-lint": "run-p clean lint",
+    "build:mkdir": "mkdirp lib",
+    "build:mkdir-and-transpile": "run-p build:mkdir build:transpile",
+    "build:terser": "run-p build:terser:*",
+    "build:terser:circular": "terser build/lib/circular.js -c -m -o lib/circular.js --toplevel",
+    "build:terser:concat": "terser build/lib/concat.js -c -m -o lib/concat.js --toplevel",
+    "build:terser:empty": "terser build/lib/empty.js -c -m -o lib/empty.js --toplevel",
+    "build:terser:index": "terser build/index.js -c -m -o index.js --toplevel",
+    "build:terser:iterators": "terser build/lib/iterators.js -c -m -o lib/iterators.js --toplevel",
+    "build:terser:linear-number-series": "terser build/lib/linear-number-series.js -c -m -o lib/linear-number-series.js --toplevel",
+    "build:terser:multiplex": "terser build/lib/multiplex.js -c -m -o lib/multiplex.js --toplevel",
+    "build:terser:single": "terser build/lib/single.js -c -m -o lib/single.js --toplevel",
+    "build:terser:transform": "terser build/lib/transform.js -c -m -o lib/transform.js --toplevel",
+    "build:terser:zip": "terser build/lib/zip.js -c -m -o lib/zip.js --toplevel",
+    "build:transpile": "tsc",
+    "clean": "rimraf build/ index.d.ts index.js lib/",
+    "lint": "eslint src/lib/*.ts",
+    "postpublish": "run-s clean",
+    "prepublishOnly": "run-s build",
     "test": "ts-node test.ts"
   },
+  "types": "index.d.ts",
   "version": "1.2.0"
 }
