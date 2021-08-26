@@ -44,17 +44,25 @@ export class ConcatenatedIterable<T> implements AsyncIterable<T>, Iterable<T> {
 }
 
 export class ConcatenatedIterator<T> implements Iterator<T> {
-  private current: Iterator<T>
+  static of<T>(...source: Iterator<T>[]): Iterator<T> {
+    return new ConcatenatedIterator<T>(source[Symbol.iterator]())
+  }
 
-  constructor(private readonly first: Iterator<T>, private readonly second: Iterator<T>) {
-    this.current = this.first
+  private current: Iterator<T>
+  private readonly source: Iterator<Iterator<T>>
+
+  constructor(sourceOrFirst: Iterator<Iterator<T>> | Iterator<T>, second?: Iterator<T>) {
+    this.source = typeof second === 'undefined'
+      ? sourceOrFirst as Iterator<Iterator<T>>
+      : [sourceOrFirst as Iterator<T>, second][Symbol.iterator]()
   }
 
   next(): IteratorResult<T> {
-    let next: IteratorResult<T> = this.current.next()
-    if (this.current == this.first && next.done) {
-      this.current = this.second
-      next = this.second.next()
+    let next = this.current.next()
+    while (next.done) {
+      const cursor = this.source.next()
+      this.current = cursor.done ? undefined : cursor.value
+      next = this.current.next()
     }
     return next
   }
