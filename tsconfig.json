@@ -20,6 +20,7 @@
   },
   "files": [
     "src/index.ts",
+    "src/lib/circular.ts",
     "src/lib/concat.ts",
     "src/lib/empty.ts",
     "src/lib/iterators.ts",
