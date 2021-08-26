@@ -49,6 +49,7 @@
     "build:terser:empty": "terser build/lib/empty.js -c -m -o lib/empty.js --toplevel",
     "build:terser:index": "terser build/index.js -c -m -o index.js --toplevel",
     "build:terser:iterators": "terser build/lib/iterators.js -c -m -o lib/iterators.js --toplevel",
+    "build:terser:multiplex": "terser build/lib/multiplex.js -c -m -o lib/multiplex.js --toplevel",
     "build:terser:single": "terser build/lib/single.js -c -m -o lib/single.js --toplevel",
     "build:terser:zip": "terser build/lib/zip.js -c -m -o lib/zip.js --toplevel",
     "build:transpile": "tsc",

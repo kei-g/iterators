@@ -24,6 +24,7 @@
     "src/lib/concat.ts",
     "src/lib/empty.ts",
     "src/lib/iterators.ts",
+    "src/lib/multiplex.ts",
     "src/lib/single.ts",
     "src/lib/zip.ts",
   ],
