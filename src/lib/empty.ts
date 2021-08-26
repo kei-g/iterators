@@ -7,8 +7,7 @@ export class EmptyIterable<T> implements Iterable<T> {
 export class EmptyIterator<T> implements Iterator<T> {
   next(): IteratorResult<T> {
     return {
-      done: true,
-      value: undefined
-    }
+      done: true
+    } as IteratorResult<T>
   }
 }
