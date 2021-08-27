@@ -5,7 +5,7 @@ import {
   isIterable,
 } from './iterators'
 
-export class AsyncMultiplexer<T> implements AsyncIterable<T> {
+export class AsyncMultiplexer<T extends Record<keyof T, T[keyof T]>> implements AsyncIterable<T> {
   private readonly fragments = {} as IterableRecordE<T>
   private readonly sources: EitherIterable<T>
 
@@ -22,9 +22,9 @@ export class AsyncMultiplexer<T> implements AsyncIterable<T> {
       this.fragments = sources
   }
 
-  add<K extends keyof T>(
+  add<K extends keyof T, V extends T[K]>(
     key: K,
-    source: EitherIterable<T extends Record<K, infer U> ? U : never>
+    source: EitherIterable<V>
   ): void {
     if (this.fragments[key])
       throw new Error(`key '${key}' duplicates`)
@@ -100,7 +100,7 @@ type IteratorRecordE<T> = Record<keyof T, EitherIterator<T[keyof T]>>
 
 type KeyPromise<T> = Promise<{ key: keyof T } & IteratorResult<T[keyof T]>>
 
-export class Multiplexer<T> implements AsyncIterable<T>, Iterable<T> {
+export class Multiplexer<T extends Record<keyof T, T[keyof T]>> implements AsyncIterable<T>, Iterable<T> {
   private readonly fragments = {} as IterableRecord<T>
   private readonly sources: Iterable<T>
 
@@ -117,9 +117,9 @@ export class Multiplexer<T> implements AsyncIterable<T>, Iterable<T> {
       this.fragments = sources
   }
 
-  add<K extends keyof T>(
+  add<K extends keyof T, V extends T[K]>(
     key: K,
-    source: Iterable<T extends Record<K, infer U> ? U : never>
+    source: Iterable<V>
   ): void {
     if (this.fragments[key])
       throw new Error(`key '${key}' duplicates`)
