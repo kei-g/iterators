@@ -4,6 +4,13 @@ export type EitherIterable<T> = AsyncIterable<T> | Iterable<T>
 
 export type EitherIterator<T> = AsyncIterator<T> | Iterator<T>
 
+export type ReturnableTypeOf<S, T extends EitherIterable<S>> =
+  T extends Iterable<S>
+    ? BothIterable<S>
+    : T extends AsyncIterable<S>
+      ? AsyncIterable<S>
+      : unknown
+
 export const isAsyncIterable =
   <T>(value: unknown): value is AsyncIterable<T> => {
     if (!value)

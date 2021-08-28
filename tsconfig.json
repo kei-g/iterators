@@ -27,6 +27,7 @@
     "src/lib/linear-number-series.ts",
     "src/lib/multiplex.ts",
     "src/lib/single.ts",
+    "src/lib/take.ts",
     "src/lib/transform.ts",
     "src/lib/zip.ts",
   ],
