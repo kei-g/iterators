@@ -1,5 +1,9 @@
 # ChangeLogs
 
+## Version 1.1.4
+
+- :memo: Link to Travis CI is corrected
+
 ## Version 1.1.3
 
 - :hammer: Build scripts are optimized
