@@ -1,4 +1,5 @@
 import {
+  BothIterable,
   EitherIterable,
   EitherIterator,
   isAsyncIterable,
@@ -100,7 +101,7 @@ type IteratorRecordE<T> = Record<keyof T, EitherIterator<T[keyof T]>>
 
 type KeyPromise<T> = Promise<{ key: keyof T } & IteratorResult<T[keyof T]>>
 
-export class Multiplexer<T extends Record<keyof T, T[keyof T]>> implements AsyncIterable<T>, Iterable<T> {
+export class Multiplexer<T extends Record<keyof T, T[keyof T]>> implements BothIterable<T> {
   private readonly fragments = {} as IterableRecord<T>
   private readonly sources: Iterable<T>
 
