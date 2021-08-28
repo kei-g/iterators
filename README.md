@@ -1,6 +1,6 @@
-# iterators [![License][license-image]][license-url] [![Dependency][depencency-image]][dependency-url] [![Travis][travis-image]][travis-url] [![npm][npm-image]][npm-url]
+# iterators [![license][license-image]][license-url] [![npm][npm-image]][npm-url]
 
-[![maintenance][maintenance-image]][npmsio-url] [![quality][quality-image]][npmsio-url]
+[![dependency][depencency-image]][dependency-url] [![maintenance][maintenance-image]][npmsio-url] [![quality][quality-image]][npmsio-url] [![test][travis-image]][travis-url]
 
 Iterators Library
 
