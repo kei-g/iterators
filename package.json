@@ -29,6 +29,10 @@
   ],
   "homepage": "https://github.com/kei-g/iterators",
   "keywords": [
+    "async",
+    "asynciterable",
+    "asynciterator",
+    "iterable",
     "iterator"
   ],
   "license": "BSD-3-Clause",
