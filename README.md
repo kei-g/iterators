@@ -22,4 +22,4 @@ npm i @kei-g/iterators
 [npmsio-url]:https://npms.io/search?q=%40kei-g%2Fiterators
 [quality-image]:https://img.shields.io/npms-io/quality-score/@kei-g/iterators?logo=npm
 [travis-image]:https://img.shields.io/travis/com/kei-g/iterators/main.svg?logo=travis
-[travis-url]:https://travis-ci.com/kei-g/iterators
+[travis-url]:https://app.travis-ci.com/github/kei-g/iterators
