@@ -5,27 +5,43 @@ import {
   isIterable,
 } from './iterators'
 
-export class AsyncMultiplexer<T> implements AsyncIterable<T> {
-  private readonly sources = {} as SourceE<T>
+export class AsyncMultiplexer<T extends Record<keyof T, T[keyof T]>> implements AsyncIterable<T> {
+  private readonly fragments = {} as IterableRecordE<T>
+  private readonly sources: EitherIterable<T>
 
-  constructor(sources?: SourceE<T>) {
-    this.sources = sources ?? {} as SourceE<T>
+  constructor(
+    sources?: EitherIterable<T> | EitherMultiplexerLike<T> | IterableRecordE<T>
+  ) {
+    if (isEitherMultiplexerLike(sources)) {
+      this.fragments = sources.fragments
+      this.sources = sources.sources
+    }
+    else if (isAsyncIterable(sources) || isIterable(sources))
+      this.sources = sources
+    else if (isEitherIterableRecord(sources))
+      this.fragments = sources
   }
 
-  add<K extends keyof T>(
+  add<K extends keyof T, V extends T[K]>(
     key: K,
-    source: EitherIterable<T extends Record<K, infer U> ? U : never>
+    source: EitherIterable<V>
   ): void {
-    if (this.sources[key])
+    if (this.fragments[key])
       throw new Error(`key '${key}' duplicates`)
-    this.sources[key] = source
+    this.fragments[key] = source as EitherIterable<T[K]>
   }
 
   [Symbol.asyncIterator](): AsyncIterator<T> {
-    return async function* (sources: SourceE<T>) {
+    return async function* (
+      fragments: IterableRecordE<T>,
+      sources: EitherIterable<T>,
+    ) {
+      if (sources)
+        for await (const value of sources)
+          yield value
       const iterators = {} as IteratorRecordE<T>
-      for (const key in sources) {
-        const source = sources[key]
+      for (const key in fragments) {
+        const source = fragments[key]
         if (isAsyncIterable(source))
           iterators[key] = source[Symbol.asyncIterator]()
         else if (isIterable(source))
@@ -36,13 +52,17 @@ export class AsyncMultiplexer<T> implements AsyncIterable<T> {
         for (const key in iterators) {
           const next = iterators[key].next()
           if (next instanceof Promise)
-            tasks.push(next.then((result: IteratorResult<unknown>) => {
-              return {
-                done: result.done,
-                key,
-                value: result.value,
-              }
-            }))
+            tasks.push(
+              next.then(
+                (result: IteratorResult<T[keyof T]>) => {
+                  return {
+                    done: result.done,
+                    key,
+                    value: result.value,
+                  }
+                }
+              )
+            )
           else
             tasks.push(Promise.resolve({
               done: next.done,
@@ -61,26 +81,49 @@ export class AsyncMultiplexer<T> implements AsyncIterable<T> {
           break
         yield value
       }
-    }(this.sources)
+    }(this.fragments, this.sources)
   }
 }
 
-type IteratorRecord<T> = Record<keyof T, Iterator<unknown>>
+type EitherMultiplexerLike<T> = {
+  readonly fragments: IterableRecord<T> | IterableRecordE<T>
+  readonly sources: EitherIterable<T>
+}
 
-type IteratorRecordE<T> = Record<keyof T, EitherIterator<unknown>>
+type IterableRecord<T> = Record<keyof T, Iterable<T[keyof T]>>
 
-type KeyPromise<T> = Promise<{ key: keyof T } & IteratorResult<unknown>>
+type IterableRecordE<T> = Record<keyof T, EitherIterable<T[keyof T]>>
 
-export class Multiplexer<T> implements AsyncIterable<T>, Iterable<T> {
-  private readonly sources = {} as Source<T>
+type IteratorRecord<T> = Record<keyof T, Iterator<T[keyof T]>>
 
-  add<K extends keyof T>(
+type IteratorRecordE<T> = Record<keyof T, EitherIterator<T[keyof T]>>
+
+type KeyPromise<T> = Promise<{ key: keyof T } & IteratorResult<T[keyof T]>>
+
+export class Multiplexer<T extends Record<keyof T, T[keyof T]>> implements AsyncIterable<T>, Iterable<T> {
+  private readonly fragments = {} as IterableRecord<T>
+  private readonly sources: Iterable<T>
+
+  constructor(
+    sources?: Iterable<T> | IterableRecord<T> | MultiplexerLike<T>
+  ) {
+    if (isMultiplexerLike(sources)) {
+      this.fragments = sources.fragments
+      this.sources = sources.sources
+    }
+    else if (isIterable(sources))
+      this.sources = sources
+    else if (isIterableRecord(sources))
+      this.fragments = sources
+  }
+
+  add<K extends keyof T, V extends T[K]>(
     key: K,
-    source: Iterable<T extends Record<K, infer U> ? U : never>
+    source: Iterable<V>
   ): void {
-    if (this.sources[key])
+    if (this.fragments[key])
       throw new Error(`key '${key}' duplicates`)
-    this.sources[key] = source
+    this.fragments[key] = source as Iterable<T[K]>
   }
 
   [Symbol.asyncIterator](): AsyncIterator<T> {
@@ -88,10 +131,13 @@ export class Multiplexer<T> implements AsyncIterable<T>, Iterable<T> {
   }
 
   [Symbol.iterator](): Iterator<T> {
-    return function* (sources: Source<T>) {
+    return function* (fragments: IterableRecord<T>, sources: Iterable<T>) {
+      if (sources)
+        for (const value of sources)
+          yield value
       const iterators = {} as IteratorRecord<T>
-      for (const key in sources)
-        iterators[key] = sources[key][Symbol.iterator]()
+      for (const key in fragments)
+        iterators[key] = fragments[key][Symbol.iterator]()
       while (true) {
         let done = true
         const value = {} as T
@@ -106,10 +152,68 @@ export class Multiplexer<T> implements AsyncIterable<T>, Iterable<T> {
           break
         yield value
       }
-    }(this.sources)
+    }(this.fragments, this.sources)
   }
 }
 
-type Source<T> = Record<keyof T, Iterable<unknown>>
+type MultiplexerLike<T> = {
+  readonly fragments: IterableRecord<T>
+  readonly sources: Iterable<T>
+}
 
-type SourceE<T> = Record<keyof T, EitherIterable<unknown>>
+const isEitherIterableRecord =
+  <T>(value: unknown): value is IterableRecordE<T> => {
+    if (!value)
+      return false
+    const maybe = value as IterableRecordE<T>
+    for (const key in maybe) {
+      const value = maybe[key]
+      if (isAsyncIterable(value) || isIterable(value))
+        continue
+      return false
+    }
+    return true
+  }
+
+const isEitherMultiplexerLike =
+  <T>(value: unknown): value is EitherMultiplexerLike<T> => {
+    if (!value)
+      return false
+    const maybe = value as EitherMultiplexerLike<T>
+    if (maybe instanceof AsyncMultiplexer)
+      return true
+    if (maybe instanceof Multiplexer)
+      return true
+    if (!isEitherIterableRecord(maybe.fragments))
+      return false
+    if (maybe.sources
+      && !isAsyncIterable(maybe.sources)
+      && !isIterable(maybe.sources))
+      return false
+    return true
+  }
+
+const isIterableRecord =
+  <T>(value: unknown): value is IterableRecord<T> => {
+    if (!value)
+      return false
+    const maybe = value as IterableRecord<T>
+    for (const key in maybe)
+      if (!isIterable(maybe[key]))
+        return false
+    return true
+  }
+
+const isMultiplexerLike =
+  <T>(value: unknown): value is MultiplexerLike<T> => {
+    if (!value)
+      return false
+    const maybe = value as MultiplexerLike<T>
+    if (maybe instanceof Multiplexer)
+      return true
+    if (!isIterableRecord(maybe.fragments))
+      return false
+    if (maybe.sources && !isIterable(maybe.sources))
+      return false
+    return true
+  }
