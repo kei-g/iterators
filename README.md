@@ -1,6 +1,6 @@
 # iterators [![license][license-image]][license-url] [![npm][npm-image]][npm-url]
 
-[![dependency][depencency-image]][dependency-url] [![maintenance][maintenance-image]][npmsio-url] [![quality][quality-image]][npmsio-url] [![test][github-test-image]][github-url] [![travis][travis-image]][travis-url]
+[![coverage][nyc-cov-image]][github-url] [![dependency][depencency-image]][dependency-url] [![maintenance][maintenance-image]][npmsio-url] [![quality][quality-image]][npmsio-url] [![test][github-test-image]][github-url] [![travis][travis-image]][travis-url]
 
 `iterators` - Iterators Library
 
@@ -20,6 +20,7 @@ npm i @kei-g/iterators
 [npm-image]:https://img.shields.io/npm/v/@kei-g/iterators?logo=npm
 [npm-url]:https://npmjs.com/@kei-g/iterators
 [npmsio-url]:https://npms.io/search?q=%40kei-g%2Fiterators
+[nyc-cov-image]:https://img.shields.io/nycrc/kei-g/iterators?config=.nycrc.json&label=coverage
 [quality-image]:https://img.shields.io/npms-io/quality-score/@kei-g/iterators?logo=npm
 [travis-image]:https://img.shields.io/travis/com/kei-g/iterators/main.svg?logo=travis
 [travis-url]:https://app.travis-ci.com/github/kei-g/iterators
