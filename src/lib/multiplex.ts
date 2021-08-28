@@ -1,4 +1,5 @@
 import {
+  BothIterable,
   EitherIterable,
   EitherIterator,
   isAsyncIterable,
@@ -16,10 +17,10 @@ export class AsyncMultiplexer<T extends Record<keyof T, T[keyof T]>> implements 
       this.fragments = sources.fragments
       this.sources = sources.sources
     }
-    else if (isAsyncIterable(sources) || isIterable(sources))
-      this.sources = sources
-    else if (isEitherIterableRecord(sources))
+    else if (isEitherIterableRecord<T>(sources))
       this.fragments = sources
+    else if (isAsyncIterable<T>(sources) || isIterable<T>(sources))
+      this.sources = sources
   }
 
   add<K extends keyof T, V extends T[K]>(
@@ -100,7 +101,7 @@ type IteratorRecordE<T> = Record<keyof T, EitherIterator<T[keyof T]>>
 
 type KeyPromise<T> = Promise<{ key: keyof T } & IteratorResult<T[keyof T]>>
 
-export class Multiplexer<T extends Record<keyof T, T[keyof T]>> implements AsyncIterable<T>, Iterable<T> {
+export class Multiplexer<T extends Record<keyof T, T[keyof T]>> implements BothIterable<T> {
   private readonly fragments = {} as IterableRecord<T>
   private readonly sources: Iterable<T>
 
@@ -111,10 +112,10 @@ export class Multiplexer<T extends Record<keyof T, T[keyof T]>> implements Async
       this.fragments = sources.fragments
       this.sources = sources.sources
     }
-    else if (isIterable(sources))
-      this.sources = sources
-    else if (isIterableRecord(sources))
+    else if (isIterableRecord<T>(sources))
       this.fragments = sources
+    else if (isIterable<T>(sources))
+      this.sources = sources
   }
 
   add<K extends keyof T, V extends T[K]>(
