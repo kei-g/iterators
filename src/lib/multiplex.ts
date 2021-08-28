@@ -17,10 +17,10 @@ export class AsyncMultiplexer<T extends Record<keyof T, T[keyof T]>> implements 
       this.fragments = sources.fragments
       this.sources = sources.sources
     }
-    else if (isAsyncIterable(sources) || isIterable(sources))
-      this.sources = sources
-    else if (isEitherIterableRecord(sources))
+    else if (isEitherIterableRecord<T>(sources))
       this.fragments = sources
+    else if (isAsyncIterable<T>(sources) || isIterable<T>(sources))
+      this.sources = sources
   }
 
   add<K extends keyof T, V extends T[K]>(
@@ -112,10 +112,10 @@ export class Multiplexer<T extends Record<keyof T, T[keyof T]>> implements BothI
       this.fragments = sources.fragments
       this.sources = sources.sources
     }
-    else if (isIterable(sources))
-      this.sources = sources
-    else if (isIterableRecord(sources))
+    else if (isIterableRecord<T>(sources))
       this.fragments = sources
+    else if (isIterable<T>(sources))
+      this.sources = sources
   }
 
   add<K extends keyof T, V extends T[K]>(
