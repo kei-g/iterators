@@ -1,4 +1,4 @@
-import { AsyncCircularSeries, CircularSeries, take } from '../src/index'
+import { AsyncCircularSeries, CircularSeries, take, until } from '../src/index'
 import { describe, it } from 'mocha'
 import { assert, expect } from 'chai'
 
@@ -53,6 +53,20 @@ describe('take', () => {
       )
     )).to.be.eq(20)
   })
+  it('take with predicate, returns undefined, from async iterable', async () => {
+    const taken = take(
+      new AsyncCircularSeries(source),
+      (value: number) => (
+        expect(value).to.satisfy((value: number) => source.includes(value)),
+        undefined
+      )
+    )
+    let caught: unknown
+    await testAsync(taken).catch((err: unknown) => caught = err)
+    expect(caught).to.be.instanceOf(Error)
+    if (caught instanceof Error)
+      expect(caught.message).to.be.eq('predicate must return Promise or boolean')
+  })
   it('take \'10\' items from iterable', async () => {
     const taken = take(new CircularSeries(source), '10')
     expect(await testAsync(taken)).to.be.eq(10)
@@ -106,6 +120,59 @@ describe('take', () => {
   it('undefined should be returned from literal number 333', () => {
     const taken = take(333 as unknown as Iterable<never>, 10)
     expect(taken).to.be.undefined
+  })
+})
+
+describe('until', () => {
+  it('until async', async () => {
+    let count = 0
+    const taken = until(
+      new AsyncCircularSeries(source),
+      (value: number) => source.includes(value) && count++ === 20
+    )
+    expect(await testAsync(taken)).to.be.eq(20)
+  })
+  it('until async, of Promise', async () => {
+    let count = 0
+    const taken = until(
+      new AsyncCircularSeries(source),
+      (value: number) => Promise.resolve(source.includes(value) && count++ === 20)
+    )
+    expect(await testAsync(taken)).to.be.eq(20)
+  })
+  it('until async, undefined', async () => {
+    const taken = until(
+      new AsyncCircularSeries(source),
+      (value: number) => (expect(value).to.satisfy((value: number) => source.includes(value)), undefined)
+    )
+    let caught: unknown
+    await testAsync(taken).catch((err: unknown) => caught = err)
+    expect(caught).to.be.instanceOf(Error)
+    if (caught instanceof Error)
+      expect(caught.message).to.be.eq('predicate must return Promise or boolean')
+  })
+  it('until sync', () => {
+    let count = 0
+    const taken = until(
+      new CircularSeries(source),
+      (value: number) => source.includes(value) && count++ === 20
+    )
+    expect(test(taken)).to.be.eq(20)
+  })
+  it('until sync, of Promise', () => {
+    let count = 0
+    const taken = until(
+      new CircularSeries(source),
+      (value: number) => Promise.resolve(source.includes(value) && count++ === 20)
+    )
+    expect(() => test(taken)).to.throw('predicate must return boolean')
+  })
+  it('until sync, undefined', () => {
+    const taken = until(
+      new CircularSeries(source),
+      (value: number) => (expect(value).to.satisfy((value: number) => source.includes(value)), undefined)
+    )
+    expect(() => test(taken)).to.throw('predicate must return Promise or boolean')
   })
 })
 

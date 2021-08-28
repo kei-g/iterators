@@ -37,10 +37,13 @@ export const take = <S, T extends EitherIterable<S>>(
             yield value
           else
             break
-        else if (await maybe)
-          yield value
+        else if (maybe instanceof Promise)
+          if (await maybe)
+            yield value
+          else
+            break
         else
-          break
+          throw new Error('predicate must return Promise or boolean')
       }
   } : undefined
   if (s)
@@ -80,3 +83,25 @@ export const take = <S, T extends EitherIterable<S>>(
       [Symbol.asyncIterator]: () => g()
     } as any
 }
+
+export const until =
+  <S, T extends EitherIterable<S>>(
+    source: T,
+    predicate: ((value: S) => PromiseLike<boolean> | boolean),
+  ): ReturnableTypeOf<S, T> => {
+    return take(
+      source,
+      (value: S) => {
+        const maybe = predicate(value)
+        if (typeof maybe === 'boolean')
+          return !maybe
+        else if (maybe instanceof Promise)
+          return new Promise(
+            (resolve: (value: boolean) => void, reject: (reason?: unknown) => void) =>
+              maybe.catch(reject).then((value: boolean) => resolve(!value))
+          )
+        else
+          throw new Error('predicate must return Promise or boolean')
+      }
+    )
+  }
