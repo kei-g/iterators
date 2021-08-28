@@ -63,6 +63,7 @@
     "build:terse:linear-number-series": "terser build/lib/linear-number-series.js -c -m -o lib/linear-number-series.js --toplevel",
     "build:terse:multiplex": "terser build/lib/multiplex.js -c -m -o lib/multiplex.js --toplevel",
     "build:terse:single": "terser build/lib/single.js -c -m -o lib/single.js --toplevel",
+    "build:terse:take": "terser build/lib/take.js -c -m -o lib/take.js --toplevel",
     "build:terse:transform": "terser build/lib/transform.js -c -m -o lib/transform.js --toplevel",
     "build:terse:zip": "terser build/lib/zip.js -c -m -o lib/zip.js --toplevel",
     "build:tsc": "tsc",
