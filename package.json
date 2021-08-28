@@ -23,6 +23,7 @@
     "node": ">=14.17.5"
   },
   "files": [
+    "CHANGELOG.md",
     "index.js",
     "index.d.ts",
     "lib"
