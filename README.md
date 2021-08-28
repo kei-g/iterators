@@ -2,7 +2,13 @@
 
 [![dependency][depencency-image]][dependency-url] [![maintenance][maintenance-image]][npmsio-url] [![quality][quality-image]][npmsio-url] [![test][travis-image]][travis-url]
 
-Iterators Library
+`iterators` - Iterators Library
+
+## Installation
+
+```shell
+npm i @kei-g/iterators
+```
 
 [depencency-image]:https://img.shields.io/librariesio/release/npm/@kei-g/iterators?logo=nodedotjs
 [dependency-url]:https://npmjs.com/package/@kei-g/iterators?activeTab=dependencies
