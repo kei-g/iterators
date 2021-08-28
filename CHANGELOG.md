@@ -1,5 +1,14 @@
 # ChangeLogs
 
+## Version 1.1.6
+
+- :dizzy_face: The change log missing in the preceding release is complemented
+
+## Version 1.1.5
+
+- :wastebasket: ConcatenatedIterator is removed
+- :white_check_mark: Coverage and Tests are added
+
 ## Version 1.1.4
 
 - :memo: Link to Travis CI is corrected
