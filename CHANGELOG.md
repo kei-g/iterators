@@ -1,5 +1,13 @@
 # ChangeLogs
 
+## Version 1.1.7
+
+- :sparkles: 'take' function is implemented
+- :sparkles: 'until' function is implemented
+- :arrow_up: Packages for development are updated
+  - `@types/node` is upgraded from 16.7.4 to 16.7.5
+  - `mocha` is upgraded from 9.1.0 to 9.1.1
+
 ## Version 1.1.6
 
 - :dizzy_face: The change log missing in the preceding release is complemented
