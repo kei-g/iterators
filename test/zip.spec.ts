@@ -1,4 +1,4 @@
-import { Foo } from './foo'
+import { Foo } from './models'
 import { ZippedIterable } from '../src/index'
 import { describe, it } from 'mocha'
 import { expect } from 'chai'

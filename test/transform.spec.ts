@@ -1,5 +1,5 @@
 import { AsyncTransformer, Transformer } from '../src/index'
-import { Foo } from './foo'
+import { Foo } from './models'
 import { describe, it } from 'mocha'
 import { expect } from 'chai'
 
