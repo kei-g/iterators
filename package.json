@@ -66,7 +66,7 @@
     "build:tsc": "tsc",
     "clean": "rimraf build/ index.d.ts index.js lib/",
     "cover": "nyc --check-coverage -r html -r text _mocha",
-    "lint": "eslint src/lib/*.ts",
+    "lint": "eslint src/**/*.ts",
     "postpublish": "run-s clean",
     "prepublishOnly": "run-s build",
     "test": "run-p cover lint"
