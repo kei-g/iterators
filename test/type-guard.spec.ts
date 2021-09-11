@@ -1,4 +1,4 @@
-import { AsyncCircularSeries, isAsyncIterable, isIterable } from '../src/index'
+import { AsyncCircularSeries, isAsyncIterable, isIterable } from '../src'
 import { expect } from 'chai'
 
 describe('isAsyncIterable', () => {

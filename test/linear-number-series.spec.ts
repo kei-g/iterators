@@ -1,4 +1,4 @@
-import { EvenNumberSeries, LinearNumberSeries, OddNumberSeries } from '../src/index'
+import { EvenNumberSeries, LinearNumberSeries, OddNumberSeries } from '../src'
 import { describe, it } from 'mocha'
 import { expect } from 'chai'
 

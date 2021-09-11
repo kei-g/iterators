@@ -1,4 +1,4 @@
-import { EmptyIterable } from '../src/index'
+import { EmptyIterable } from '../src'
 import { describe, it } from 'mocha'
 import { expect } from 'chai'
 

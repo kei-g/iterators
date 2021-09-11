@@ -1,4 +1,4 @@
-import { AsyncCircularSeries, CircularSeries, take, until } from '../src/index'
+import { AsyncCircularSeries, CircularSeries, take, until } from '../src'
 import { describe, it } from 'mocha'
 import { assert, expect } from 'chai'
 

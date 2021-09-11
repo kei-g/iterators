@@ -1,34 +1,33 @@
 {
   "compilerOptions": {
+    "alwaysStrict": true,
     "charset": "utf8",
     "declaration": true,
     "declarationDir": ".",
     "downlevelIteration": true,
+    "emitDecoratorMetadata": false,
+    "esModuleInterop": true,
+    "experimentalDecorators": false,
     "lib": [
-      "ES2020"
+      "ES2020",
     ],
     "module": "CommonJS",
     "moduleResolution": "node",
     "newLine": "lf",
     "outDir": "build",
     "pretty": true,
-    "removeComments": true,
+    "removeComments": false,
     "skipLibCheck": true,
     "strict": true,
     "strictNullChecks": false,
     "target": "ES2020",
+    "typeRoots": [
+      "node_modules/@types",
+    ],
   },
-  "files": [
-    "src/index.ts",
-    "src/lib/circular.ts",
-    "src/lib/concat.ts",
-    "src/lib/empty.ts",
-    "src/lib/iterators.ts",
-    "src/lib/linear-number-series.ts",
-    "src/lib/multiplex.ts",
-    "src/lib/single.ts",
-    "src/lib/take.ts",
-    "src/lib/transform.ts",
-    "src/lib/zip.ts",
+  "exclude": [
+  ],
+  "include": [
+    "src",
   ],
 }
