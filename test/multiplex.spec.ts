@@ -1,4 +1,4 @@
-import { AsyncMultiplexer, ConcatenatedAsyncIterable, Multiplexer } from '../src/index'
+import { AsyncMultiplexer, ConcatenatedAsyncIterable, Multiplexer } from '../src'
 import { describe, it } from 'mocha'
 import { expect } from 'chai'
 
