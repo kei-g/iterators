@@ -1,4 +1,4 @@
-import { ConcatenatedAsyncIterable, ConcatenatedIterable } from '../src/index'
+import { ConcatenatedAsyncIterable, ConcatenatedIterable } from '../src'
 import { describe, it } from 'mocha'
 import { expect } from 'chai'
 

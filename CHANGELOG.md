@@ -1,5 +1,18 @@
 # ChangeLogs
 
+## Version 1.1.8
+
+- :sparkles: 'LazyIterable' class is implemented
+- :arrow_up: Packages for development are updated
+  - `@types/node` is upgraded from 16.7.5 to 16.9.1
+  - `@typescript-eslint/eslint-plugin` is upgraded from 4.29.3 to 4.31.0
+  - `@typescript-eslint/parser` is upgraded from 4.29.3 to 4.31.0
+  - `typescript` is upgraded from 4.4.2 to 4.4.3
+- :heavy_minus_sign: Some dependent packages are removed
+  - `mkdirp` is removed
+  - `uuid` is removed
+- :green_heart: Target versions of Node.js for GitHub CI is updated
+
 ## Version 1.1.7
 
 - :sparkles: 'take' function is implemented

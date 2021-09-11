@@ -10,6 +10,10 @@
 npm i @kei-g/iterators
 ```
 
+## TODO
+
+- :memo: Generate documents of APIs
+
 [depencency-image]:https://img.shields.io/librariesio/release/npm/@kei-g/iterators?logo=nodedotjs
 [dependency-url]:https://npmjs.com/package/@kei-g/iterators?activeTab=dependencies
 [github-test-image]:https://img.shields.io/github/workflow/status/kei-g/iterators/test?label=test%20%26%20build&logo=github

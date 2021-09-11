@@ -1,4 +1,4 @@
-import { SingleIterable } from '../src/index'
+import { SingleIterable } from '../src'
 import { describe, it } from 'mocha'
 import { expect } from 'chai'
 
