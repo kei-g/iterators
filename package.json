@@ -26,12 +26,6 @@
   "engines": {
     "node": ">=14.17.5"
   },
-  "files": [
-    "CHANGELOG.md",
-    "index.js",
-    "index.d.ts",
-    "lib"
-  ],
   "homepage": "https://github.com/kei-g/iterators",
   "keywords": [
     "async",
