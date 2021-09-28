@@ -1,5 +1,16 @@
 # ChangeLogs
 
+## Version 1.1.9
+
+- :arrow_up: Packages for development are updated
+  - `@types/chai` is upgraded from 4.2.21 to 4.2.22
+  - `@types/node` is upgraded from 16.9.1 to 16.10.1
+  - `@typescript-eslint/eslint-plugin` is upgraded from 4.31.0 to 4.32.0
+  - `@typescript-eslint/parser` is upgraded from 4.31.0 to 4.32.0
+  - `mocha` is upgraded from 9.1.1 to 9.1.2
+  - `terser` is upgraded from 5.7.2 to 5.9.0
+- :bug: 'lib/index.js' has been fallen out is made up for
+
 ## Version 1.1.8
 
 - :sparkles: 'LazyIterable' class is implemented
