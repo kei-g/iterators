@@ -24,7 +24,7 @@ npm i @kei-g/iterators
 [npm-image]:https://img.shields.io/npm/v/@kei-g/iterators?logo=npm
 [npm-url]:https://npmjs.com/@kei-g/iterators
 [npmsio-url]:https://npms.io/search?q=%40kei-g%2Fiterators
-[nyc-cov-image]:https://img.shields.io/nycrc/kei-g/iterators?config=.nycrc.json&label=coverage
+[nyc-cov-image]:https://img.shields.io/nycrc/kei-g/iterators?config=.nycrc.json&label=coverage&logo=mocha
 [quality-image]:https://img.shields.io/npms-io/quality-score/@kei-g/iterators?logo=npm
-[travis-image]:https://img.shields.io/travis/com/kei-g/iterators/main.svg?logo=travis
+[travis-image]:https://img.shields.io/travis/com/kei-g/iterators/main.svg?label=test%20%26%20build&logo=travis
 [travis-url]:https://app.travis-ci.com/github/kei-g/iterators
