@@ -1,5 +1,17 @@
 # ChangeLogs
 
+## Version 1.1.10
+
+- :building_construction: Migration from `terser` to `esbuild`
+- :arrow_up: Packages for development are updated
+  - `@types/node` is upgraded from 16.10.1 to 16.11.7
+  - `@typescript-eslint/eslint-plugin` is upgraded from 4.32.0 to 5.3.1
+  - `@typescript-eslint/parser` is upgraded from 4.32.0 to 5.3.1
+  - `eslint` is upgraded from 7.32.0 to 8.2.0
+  - `mocha` is upgraded from 9.1.2 to 9.1.3
+  - `ts-node` is upgraded from 10.2.1 to 10.4.0
+  - `typescript` is upgraded from 4.4.3 to 4.4.4
+
 ## Version 1.1.9
 
 - :arrow_up: Packages for development are updated
