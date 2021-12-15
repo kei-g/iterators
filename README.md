@@ -1,6 +1,6 @@
 # iterators [![license][license-image]][license-url] [![npm][npm-image]][npm-url]
 
-[![coverage][nyc-cov-image]][github-url] [![dependency][depencency-image]][dependency-url] [![maintenance][maintenance-image]][npmsio-url] [![quality][quality-image]][npmsio-url] [![test][github-test-image]][github-url] [![travis][travis-image]][travis-url]
+[![coverage][nyc-cov-image]][github-url] [![dependency][depencency-image]][dependency-url] [![maintenance][maintenance-image]][npmsio-url] [![quality][quality-image]][npmsio-url] [![GitHub CI (Coverage)][github-coverage-image]][github-coverage-url] [![travis][travis-image]][travis-url]
 
 `iterators` - Iterators Library
 
@@ -16,7 +16,8 @@ npm i @kei-g/iterators
 
 [depencency-image]:https://img.shields.io/librariesio/release/npm/@kei-g/iterators?logo=nodedotjs
 [dependency-url]:https://npmjs.com/package/@kei-g/iterators?activeTab=dependencies
-[github-test-image]:https://img.shields.io/github/workflow/status/kei-g/iterators/test?label=test%20%26%20build&logo=github
+[github-coverage-image]:https://github.com/kei-g/iterators/actions/workflows/main.yml/badge.svg
+[github-coverage-url]:https://github.com/kei-g/iterators/actions/workflows/main.yml
 [github-url]:https://github.com/kei-g/iterators
 [license-image]:https://img.shields.io/github/license/kei-g/iterators
 [license-url]:https://opensource.org/licenses/BSD-3-Clause
