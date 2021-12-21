@@ -16,8 +16,8 @@ npm i @kei-g/iterators
 
 [depencency-image]:https://img.shields.io/librariesio/release/npm/@kei-g/iterators?logo=nodedotjs
 [dependency-url]:https://npmjs.com/package/@kei-g/iterators?activeTab=dependencies
-[github-coverage-image]:https://github.com/kei-g/iterators/actions/workflows/main.yml/badge.svg
-[github-coverage-url]:https://github.com/kei-g/iterators/actions/workflows/main.yml
+[github-coverage-image]:https://github.com/kei-g/iterators/actions/workflows/coverage.yml/badge.svg
+[github-coverage-url]:https://github.com/kei-g/iterators/actions/workflows/coverage.yml
 [github-url]:https://github.com/kei-g/iterators
 [license-image]:https://img.shields.io/github/license/kei-g/iterators
 [license-url]:https://opensource.org/licenses/BSD-3-Clause
