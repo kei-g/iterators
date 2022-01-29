@@ -1,8 +1,16 @@
 # iterators [![license][license-image]][license-url] [![npm][npm-image]][npm-url]
 
-[![coverage][nyc-cov-image]][github-url] [![dependency][depencency-image]][dependency-url] [![maintenance][maintenance-image]][npmsio-url] [![quality][quality-image]][npmsio-url] [![GitHub CI (Coverage)][github-coverage-image]][github-coverage-url] [![travis][travis-image]][travis-url]
+[![coverage][nyc-cov-image]][github-url] [![dependency][depencency-image]][dependency-url] [![maintenance][maintenance-image]][npmsio-url] [![quality][quality-image]][npmsio-url]
 
 `iterators` - Iterators Library
+
+## CI Status
+
+| | Build | Coverage |
+| ---- | ---- | ---- |
+| **devel** | [![GitHub CI (Build)][github-devel-build-image]][github-devel-build-url] | [![GitHub CI (Coverage)][github-devel-coverage-image]][github-devel-coverage-url] |
+| **main** | [![GitHub CI (Build)][github-main-build-image]][github-main-build-url] | [![GitHub CI (Coverage)][github-main-coverage-image]][github-main-coverage-url] |
+| **release** | [![GitHub CI (Build)][github-release-build-image]][github-release-build-url] | [![GitHub CI (Coverage)][github-release-coverage-image]][github-release-coverage-url] |
 
 ## Installation
 
@@ -16,8 +24,18 @@ npm i @kei-g/iterators
 
 [depencency-image]:https://img.shields.io/librariesio/release/npm/@kei-g/iterators?logo=nodedotjs
 [dependency-url]:https://npmjs.com/package/@kei-g/iterators?activeTab=dependencies
-[github-coverage-image]:https://github.com/kei-g/iterators/actions/workflows/main.yml/badge.svg
-[github-coverage-url]:https://github.com/kei-g/iterators/actions/workflows/main.yml
+[github-devel-build-image]:https://github.com/kei-g/iterators/actions/workflows/build.yml/badge.svg?branch=devel
+[github-devel-build-url]:https://github.com/kei-g/iterators/actions/workflows/build.yml?query=branch%3Adevel
+[github-devel-coverage-image]:https://github.com/kei-g/iterators/actions/workflows/coverage.yml/badge.svg?branch=devel
+[github-devel-coverage-url]:https://github.com/kei-g/iterators/actions/workflows/coverage.yml?query=branch%3Adevel
+[github-main-build-image]:https://github.com/kei-g/iterators/actions/workflows/build.yml/badge.svg?branch=main
+[github-main-build-url]:https://github.com/kei-g/iterators/actions/workflows/build.yml?query=branch%3Amain
+[github-main-coverage-image]:https://github.com/kei-g/iterators/actions/workflows/coverage.yml/badge.svg?branch=main
+[github-main-coverage-url]:https://github.com/kei-g/iterators/actions/workflows/coverage.yml?query=branch%3Amain
+[github-release-build-image]:https://github.com/kei-g/iterators/actions/workflows/build.yml/badge.svg?branch=release
+[github-release-build-url]:https://github.com/kei-g/iterators/actions/workflows/build.yml?query=branch%3Arelease
+[github-release-coverage-image]:https://github.com/kei-g/iterators/actions/workflows/coverage.yml/badge.svg?branch=release
+[github-release-coverage-url]:https://github.com/kei-g/iterators/actions/workflows/coverage.yml?query=branch%3Arelease
 [github-url]:https://github.com/kei-g/iterators
 [license-image]:https://img.shields.io/github/license/kei-g/iterators
 [license-url]:https://opensource.org/licenses/BSD-3-Clause
@@ -27,5 +45,3 @@ npm i @kei-g/iterators
 [npmsio-url]:https://npms.io/search?q=%40kei-g%2Fiterators
 [nyc-cov-image]:https://img.shields.io/nycrc/kei-g/iterators?config=.nycrc.json&label=coverage&logo=mocha
 [quality-image]:https://img.shields.io/npms-io/quality-score/@kei-g/iterators?logo=npm
-[travis-image]:https://img.shields.io/travis/com/kei-g/iterators/main.svg?label=test%20%26%20build&logo=travis
-[travis-url]:https://app.travis-ci.com/github/kei-g/iterators
