@@ -31,10 +31,8 @@ on:
     paths-ignore:
       - '**.md'
       - '.editorconfig'
-      - '.gitattributes'
       - '.gitignore'
       - '.github/dependabot.yml'
-      - '.gitmodules'
       - 'LICENSE'
   push:
     branches:
@@ -44,8 +42,6 @@ on:
     paths-ignore:
       - '**.md'
       - '.editorconfig'
-      - '.gitattributes'
       - '.gitignore'
       - '.github/dependabot.yml'
-      - '.gitmodules'
       - 'LICENSE'
