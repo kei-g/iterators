@@ -10,19 +10,11 @@ export class LazyIterable<T> implements AsyncIterable<T> {
   }
 
   [Symbol.asyncIterator](): AsyncIterator<T> {
-    return async function* (executor: Executor<T>) {
-      const iterator = new LazyIterator<T>(executor)
-      while (true) {
-        const value = await iterator.nextAsync()
-        if (value instanceof Complete)
-          break
-        yield value
-      }
-    }(this.executor)
+    return new LazyIterator(this.executor)
   }
 }
 
-class LazyIterator<T> {
+class LazyIterator<T> implements AsyncIterator<T> {
   private readonly pending = [] as (Complete | T)[]
   private readonly resolvers = [] as ((value: Complete | T) => void)[]
 
@@ -39,7 +31,15 @@ class LazyIterator<T> {
     )
   }
 
-  nextAsync(): Promise<Complete | T> {
+  async next(): Promise<IteratorResult<T>> {
+    const value = await this.nextValueAsync()
+    return {
+      done: value instanceof Complete,
+      value: value instanceof Complete ? undefined : value as T,
+    }
+  }
+
+  private nextValueAsync(): Promise<Complete | T> {
     return new Promise(
       (resolve: (value: Complete | T) => void) => this.postpone(resolve)
     )
@@ -68,5 +68,13 @@ class LazyIterator<T> {
           ? resolve(this.pending.shift())
           : this.resolvers.push(resolve)
     )
+  }
+
+  return(value?: unknown): Promise<IteratorResult<T>> {
+    throw new Error(`${value}`)
+  }
+
+  throw(error?: unknown): Promise<IteratorResult<T>> {
+    throw new Error(`${error}`)
   }
 }
