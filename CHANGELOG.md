@@ -60,7 +60,7 @@
 ## Version 1.1.3
 
 - :hammer: Build scripts are optimized
-- :memo: CHCNGELOG.md is added
+- :memo: CHANGELOG.md is added
 - :memo: CODE_OF_CONDUCT.md is added
 - :sparkles: Copy constructor is added to Multiplexer
 - :boom: Generic type of Multiplexer is changed to extend Record
