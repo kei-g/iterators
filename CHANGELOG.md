@@ -1,5 +1,25 @@
 # ChangeLogs
 
+## Version 1.1.11
+
+- :sparkles: AsyncIterator interface is implemented on LazyIterator
+- :green_heart: CI/CD is improved
+- :recycle: Cyclomatic complexities are reduced
+- :memo: Documents are updated
+- :arrow_up: Packages for development are bumped
+  - `@types/chai` is bumped from 4.2.22 to 4.3.4
+  - `@types/mocha` is bumped from 9.0.0 to 10.0.1
+  - `@types/node` is bumped from 16.11.7 to 18.11.17
+  - `@typescript-eslint/eslint-plugin` is bumped from 5.3.1 to 5.47.0
+  - `@typescript-eslint/parser` is bumped from 5.3.1 to 5.47.0
+  - `chai` is bumped from 4.3.4 to 4.3.7
+  - `esbuild` is bumped from 0.13.13 to 0.16.10
+  - `eslint` is bumped from 8.2.0 to 8.30.0
+  - `mocha` is bumped from 9.1.3 to 10.2.0
+  - `ts-node` is bumped from 10.4.0 to 10.9.1
+  - `typescript` is bumped from 4.4.4 to 4.9.4
+- :bug: Symbols are wrapped by String()
+
 ## Version 1.1.10
 
 - :building_construction: Migration from `terser` to `esbuild`
