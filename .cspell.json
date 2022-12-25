@@ -1,0 +1,13 @@
+{
+  "version": "0.2",
+  "words": [
+    "asynciterable",
+    "autobuild",
+    "codeql",
+    "devel",
+    "esbuild",
+    "outfile",
+    "postpublish",
+    "tada"
+  ]
+}
