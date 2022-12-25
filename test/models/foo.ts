@@ -32,13 +32,14 @@ export namespace Foo {
 
   export const idSelector = (foo: Foo): number => foo.id
 
-  export const includes = (value: Foo | number | string): boolean => {
-    if (typeof value === 'number')
-      return Members.map(idSelector).includes(value)
-    if (typeof value === 'string')
-      return Members.map(nameSelector).includes(value)
-    return Members.some((foo: Foo) => foo.id === value.id && foo.name === value.name)
-  }
+  export const includes = (value: Foo | number | string): boolean =>
+    typeof value === 'number'
+      ? Members.map(idSelector).includes(value)
+      : typeof value === 'string'
+        ? Members.map(nameSelector).includes(value)
+        : Members.some(isEqualTo(value))
+
+  const isEqualTo = (value: Foo) => (foo: Foo) => foo.id === value.id && foo.name === value.name
 
   export const nameSelector = (foo: Foo): string => foo.name
 
