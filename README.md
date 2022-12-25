@@ -20,6 +20,7 @@ npm i @kei-g/iterators
 
 ## TODO
 
+- :building_construction: Follow changes of [`typescript`][typescript-url] 4.7 later
 - :memo: Generate documents of APIs
 
 [depencency-image]:https://img.shields.io/librariesio/release/npm/@kei-g/iterators?logo=nodedotjs
@@ -51,3 +52,4 @@ npm i @kei-g/iterators
 [npmsio-url]:https://npms.io/search?q=%40kei-g%2Fiterators
 [nyc-cov-image]:https://img.shields.io/nycrc/kei-g/iterators?config=.nycrc.json&label=coverage&logo=mocha
 [quality-image]:https://img.shields.io/npms-io/quality-score/@kei-g/iterators?logo=npm
+[typescript-url]:https://github.com/microsoft/TypeScript

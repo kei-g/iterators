@@ -28,7 +28,7 @@ export class AsyncMultiplexer<T extends Record<keyof T, T[keyof T]>> implements 
     source: EitherIterable<V>
   ): void {
     if (this.fragments[key])
-      throw new Error(`key '${key}' duplicates`)
+      throw new Error(`key '${String(key)}' duplicates`)
     this.fragments[key] = source as EitherIterable<T[K]>
   }
 
@@ -123,7 +123,7 @@ export class Multiplexer<T extends Record<keyof T, T[keyof T]>> implements BothI
     source: Iterable<V>
   ): void {
     if (this.fragments[key])
-      throw new Error(`key '${key}' duplicates`)
+      throw new Error(`key '${String(key)}' duplicates`)
     this.fragments[key] = source as Iterable<T[K]>
   }
 
