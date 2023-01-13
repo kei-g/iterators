@@ -2,7 +2,7 @@
 
 [![coverage][nyc-cov-image]][github-url] [![dependency][depencency-image]][dependency-url] [![maintenance][maintenance-image]][npmsio-url] [![quality][quality-image]][npmsio-url]
 
-`iterators` - Iterators Library
+[`iterators`][github-url] - Iterators Library
 
 ## CI Status
 
