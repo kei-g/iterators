@@ -4,6 +4,7 @@
     "asynciterable",
     "autobuild",
     "codeql",
+    "cyclomatic",
     "devel",
     "esbuild",
     "outfile",
