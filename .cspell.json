@@ -7,6 +7,7 @@
     "cyclomatic",
     "devel",
     "esbuild",
+    "linebreak",
     "outfile",
     "postpublish",
     "tada"
