@@ -1,5 +1,12 @@
 # ChangeLogs
 
+## Version 1.1.13
+
+- :arrow_up: Packages for development are bumped
+  - `esbuild` is bumped from 0.16.17 to 17.0.0
+  - `eslint` is bumped from 8.31.0 to 8.32.0
+  - `rimraf` is bumped from 4.0.4 to 4.0.5
+
 ## Version 1.1.12
 
 - :arrow_up: Packages for development are bumped
