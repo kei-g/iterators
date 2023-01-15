@@ -4,11 +4,13 @@
     "asynciterable",
     "autobuild",
     "codeql",
+    "commitish",
     "cyclomatic",
     "devel",
     "esbuild",
     "outfile",
     "postpublish",
-    "tada"
+    "tada",
+    "typeof"
   ]
 }
