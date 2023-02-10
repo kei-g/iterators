@@ -1,7 +1,6 @@
 export * from './circular'
 export * from './concat'
 export * from './empty'
-export * from './iterators'
 export * from './lazy'
 export * from './linear-number-series'
 export * from './multiplex'

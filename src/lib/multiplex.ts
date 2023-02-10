@@ -4,7 +4,7 @@ import {
   EitherIterator,
   isAsyncIterable,
   isIterable,
-} from './iterators'
+} from '..'
 
 export class AsyncMultiplexer<T extends Record<keyof T, T[keyof T]>> implements AsyncIterable<T> {
   private readonly fragments = {} as IterableRecordE<T>

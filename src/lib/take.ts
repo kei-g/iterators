@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { EitherIterable, ReturnableTypeOf, isAsyncIterable, isIterable } from './iterators'
+import { EitherIterable, ReturnableTypeOf, isAsyncIterable, isIterable } from '..'
 
 type CountOrPredicate<S> =
   bigint |
