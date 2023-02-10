@@ -1,4 +1,4 @@
-import { AsyncCircularSeries, CircularSeries, take, until } from '../src'
+import { AsyncCircularSeries, CircularSeries, CountOrPredicate, take, until } from '../src'
 import { describe, it } from 'mocha'
 import { assert, expect } from 'chai'
 
@@ -56,10 +56,10 @@ describe('take', () => {
   it('take with predicate, returns undefined, from async iterable', async () => {
     const taken = take(
       new AsyncCircularSeries(source),
-      (value: number) => (
-        expect(value).to.satisfy((value: number) => source.includes(value)),
-        undefined
-      )
+      (value: number) => {
+        expect(value).to.satisfy((value: number) => source.includes(value))
+        return undefined as unknown as boolean
+      }
     )
     let caught: unknown
     await testAsync(taken).catch((err: unknown) => caught = err)
@@ -113,7 +113,7 @@ describe('take', () => {
     expect(() => test(taken)).to.throw('predicate must return boolean')
   })
   it('take with undefined from iterable', async () => {
-    const taken = take(new CircularSeries(source), undefined)
+    const taken = take(new CircularSeries(source), undefined as unknown as CountOrPredicate<number>)
     expect(await testAsync(taken)).to.be.eq(0)
     expect(test(taken)).to.be.eq(0)
   })
@@ -143,7 +143,10 @@ describe('until', () => {
   it('until async, undefined', async () => {
     const taken = until(
       new AsyncCircularSeries(source),
-      (value: number) => (expect(value).to.satisfy((value: number) => source.includes(value)), undefined)
+      (value: number) => {
+        expect(value).to.satisfy((value: number) => source.includes(value))
+        return undefined as unknown as boolean
+      }
     )
     let caught: unknown
     await testAsync(taken).catch((err: unknown) => caught = err)
@@ -170,7 +173,10 @@ describe('until', () => {
   it('until sync, undefined', () => {
     const taken = until(
       new CircularSeries(source),
-      (value: number) => (expect(value).to.satisfy((value: number) => source.includes(value)), undefined)
+      (value: number) => {
+        expect(value).to.satisfy((value: number) => source.includes(value))
+        return undefined as unknown as boolean
+      }
     )
     expect(() => test(taken)).to.throw('predicate must return Promise or boolean')
   })

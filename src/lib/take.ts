@@ -1,6 +1,6 @@
 import { EitherIterable, ReturnableTypeOf, isAsyncIterable, isIterable } from '..'
 
-type CountOrPredicate<S> =
+export type CountOrPredicate<S> =
   bigint |
   boolean |
   number |

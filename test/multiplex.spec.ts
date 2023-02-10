@@ -40,7 +40,7 @@ describe('async multiplexer', () => {
   it('construct with multiplexer-like, case: \'fragments\' is defined but not iterable', async () => {
     const m = new AsyncMultiplexer<C>({
       fragments: { a: 123 } as unknown as Record<keyof C, Iterable<C[keyof C]>>,
-      sources: undefined,
+      sources: undefined as unknown as Iterable<C>,
     })
     m.add('a', seriesOfA)
     m.add('b', seriesOfB)
@@ -49,7 +49,7 @@ describe('async multiplexer', () => {
   it('construct with multiplexer-like, case: \'sources\' is undefined', async () => {
     const m = new AsyncMultiplexer<C>({
       fragments: { b: seriesOfB } as unknown as Record<keyof C, Iterable<C[keyof C]>>,
-      sources: undefined,
+      sources: undefined as unknown as Iterable<C>,
     })
     m.add('a', seriesOfA)
     await validateAsync(m)
@@ -117,7 +117,7 @@ describe('multiplexer', () => {
   it('construct with multiplexer-like, case: \'sources\' is undefined', () => {
     const m = new Multiplexer<C>({
       fragments: { b: seriesOfB } as unknown as Record<keyof C, Iterable<C[keyof C]>>,
-      sources: undefined,
+      sources: undefined as unknown as Iterable<C>,
     })
     m.add('a', seriesOfA)
     validate(m)
