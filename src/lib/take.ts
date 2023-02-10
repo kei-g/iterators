@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { EitherIterable, ReturnableTypeOf, isAsyncIterable, isIterable } from '..'
 
 type CountOrPredicate<S> =
@@ -77,11 +75,11 @@ export const take = <S, T extends EitherIterable<S>>(
             }
         }()
       },
-    } as any
+    } as ReturnableTypeOf<S, T>
   else if (a)
     return {
       [Symbol.asyncIterator]: () => g()
-    } as any
+    } as ReturnableTypeOf<S, T>
 }
 
 export const until =
