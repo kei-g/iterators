@@ -1,17 +1,14 @@
 {
+  "allowCompoundWords": true,
+  "caseSensitive": false,
   "version": "0.2",
   "words": [
     "asynciterable",
-    "autobuild",
     "codeql",
     "commitish",
     "cyclomatic",
     "devel",
     "esbuild",
-    "linebreak",
-    "outfile",
-    "postpublish",
-    "tada",
-    "typeof"
+    "tada"
   ]
 }
