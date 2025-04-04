@@ -1,7 +1,7 @@
+import assert from 'node:assert'
 import { Foo } from './models'
 import { ZippedIterable } from '../src'
 import { describe, it } from 'mocha'
-import { expect } from 'chai'
 
 describe('zip', () => {
   it('is able to zip', () => {
@@ -10,6 +10,6 @@ describe('zip', () => {
       Foo.Members.map(Foo.nameSelector),
       Foo.compose
     ))
-      expect(foo).to.satisfy(Foo.includes)
+      assert(Foo.includes(foo))
   })
 })

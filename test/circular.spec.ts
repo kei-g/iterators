@@ -1,6 +1,6 @@
 import { AsyncCircularSeries, CircularSeries } from '../src'
 import { describe, it } from 'mocha'
-import { expect } from 'chai'
+import { equal } from 'node:assert'
 
 describe('async circular series', () => {
   it('asynchronous', async () =>
@@ -19,7 +19,7 @@ describe('circular series', () => {
 
 const evaluate =
   (ctx: { index: number }, value: number): boolean => (
-    expect(value).to.be.eq([1, 2, 3][ctx.index++ % 3]),
+    equal(value, [1, 2, 3][ctx.index++ % 3]),
     ctx.index === 255
   )
 

@@ -1,7 +1,7 @@
+import assert from 'node:assert'
 import { AsyncTransformer, Transformer } from '../src'
 import { Foo } from './models'
 import { describe, it } from 'mocha'
-import { expect } from 'chai'
 
 describe('async transformer', () => {
   it('is able to transform', async () =>
@@ -16,6 +16,6 @@ describe('transformer', () => {
   it('is able to transform', () => {
     const tx = new Transformer(Foo.Members, Foo.nameSelector)
     for (const name of tx)
-      expect(name).to.satisfy(Foo.includes)
+      assert(Foo.includes(name))
   })
 })

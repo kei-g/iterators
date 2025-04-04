@@ -1,6 +1,6 @@
 import { ConcatenatedAsyncIterable, ConcatenatedIterable } from '../src'
 import { describe, it } from 'mocha'
-import { expect } from 'chai'
+import { equal } from 'node:assert'
 
 describe('async concat', () => {
   it('asynchronous', async () =>
@@ -18,7 +18,7 @@ describe('concat iterable', () => {
       [1, 2, 3],
       [4, 5, 6, 7, 8],
     ))
-      expect(value).to.be.eq(index++)
+      equal(value, index++)
   })
 })
 
@@ -27,5 +27,5 @@ const source = [[1, 2, 3], [4, 5, 6], [7, 8]]
 const testAsync = async <T>(source: AsyncIterable<T>) => {
   let index = 1
   for await (const value of source)
-    expect(value).to.be.eq(index++)
+    equal(value, index++)
 }

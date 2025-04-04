@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 
-import { expect } from 'chai'
+import assert from 'node:assert'
 
 export type Foo = {
   id: number
@@ -46,6 +46,6 @@ export namespace Foo {
   export const testAsync =
     async (names: AsyncIterable<string>): Promise<void> => {
       for await (const name of names)
-        expect(Foo.Members.map(nameSelector)).to.contain(name)
+        assert(Foo.Members.map(nameSelector).concat(name))
     }
 }

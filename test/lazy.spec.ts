@@ -1,6 +1,6 @@
+import assert, { equal } from 'node:assert'
 import { LazyIterable } from '../src'
 import { describe, it } from 'mocha'
-import { expect } from 'chai'
 
 describe('lazy', () => {
   it('async - complete immediately', async () => {
@@ -18,8 +18,8 @@ describe('lazy', () => {
     const expected = [3, 1, 4]
     let i = 0
     for await (const value of lazy)
-      expect(value).to.be.eq(expected[i++])
-    expect(i).to.be.eq(expected.length)
+      equal(value, expected[i++])
+    equal(i, expected.length)
   })
   it('async - complete later', async () => {
     const lazy = new LazyIterable(
@@ -36,8 +36,8 @@ describe('lazy', () => {
     const expected = [3, 1, 4]
     let i = 0
     for await (const value of lazy)
-      expect(value).to.be.eq(expected[i++])
-    expect(i).to.be.eq(expected.length)
+      equal(value, expected[i++])
+    equal(i, expected.length)
   })
   it('catch an error - call return', async () => {
     const lazy = new LazyIterable(
@@ -52,15 +52,14 @@ describe('lazy', () => {
       }
     )
     const iter = lazy[Symbol.asyncIterator]()
-    let caught: unknown = undefined
     if ('return' in iter && typeof iter.return === 'function')
       try {
         await iter.return()
+        assert(false)
       }
       catch (err: unknown) {
-        caught = err
+        assert(err instanceof Error)
       }
-    expect(caught).to.be.an.instanceOf(Error)
   })
   it('catch an error - call throw', async () => {
     const lazy = new LazyIterable(
@@ -75,14 +74,13 @@ describe('lazy', () => {
       }
     )
     const iter = lazy[Symbol.asyncIterator]()
-    let caught: unknown = undefined
     if ('throw' in iter && typeof iter.throw === 'function')
       try {
         await iter.throw()
+        assert(false)
       }
       catch (err: unknown) {
-        caught = err
+        assert(err instanceof Error)
       }
-    expect(caught).to.be.an.instanceOf(Error)
   })
 })

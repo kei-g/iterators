@@ -1,6 +1,6 @@
 import { AsyncMultiplexer, ConcatenatedAsyncIterable, Multiplexer } from '../src'
 import { describe, it } from 'mocha'
-import { expect } from 'chai'
+import { equal, notEqual, throws } from 'node:assert'
 
 describe('async multiplexer', () => {
   it('add asynciterable', async () => {
@@ -16,13 +16,16 @@ describe('async multiplexer', () => {
     m.add('b', seriesOfB)
     let caught: unknown
     await validateAsync(m).catch((err: unknown) => caught = err)
-    expect(caught).to.not.undefined
+    notEqual(caught, undefined)
   })
   it('fail if same key is added twice', () => {
     const m = new AsyncMultiplexer<C>()
     m.add('a', seriesOfA)
     m.add('b', seriesOfB)
-    expect(() => m.add('a', [4, 5, 6])).throws('key \'a\' duplicates')
+    throws(
+      () => m.add('a', [4, 5, 6]),
+      new Error('key \'a\' duplicates')
+    )
   })
   it('is able to multiplex', async () => {
     const m = new AsyncMultiplexer<C>()
@@ -99,7 +102,10 @@ describe('multiplexer', () => {
     const m = new Multiplexer<C>()
     m.add('a', seriesOfA)
     m.add('b', seriesOfB)
-    expect(() => m.add('a', [4, 5, 6])).throws('key \'a\' duplicates')
+    throws(
+      () => m.add('a', [4, 5, 6]),
+      new Error('key \'a\' duplicates')
+    )
   })
   it('is able to multiplex', () => {
     const m = new Multiplexer<C>()
@@ -155,8 +161,8 @@ type C = {
 }
 
 const evaluate = (ctx: { index: number }, c: C): void => {
-  expect(c.a).to.be.eq(seriesOfA[ctx.index])
-  expect(c.b).to.be.eq(seriesOfB[ctx.index])
+  equal(c.a, seriesOfA[ctx.index])
+  equal(c.b, seriesOfB[ctx.index])
   ctx.index++
 }
 
