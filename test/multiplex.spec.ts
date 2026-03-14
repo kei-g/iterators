@@ -1,4 +1,4 @@
-import { AsyncMultiplexer, ConcatenatedAsyncIterable, Multiplexer } from '../src'
+import { AsyncMultiplexer, ConcatenatedAsyncIterable, Multiplexer } from '../src/index.ts'
 import { describe, it } from 'mocha'
 import { equal, notEqual, throws } from 'node:assert'
 

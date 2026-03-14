@@ -1,4 +1,4 @@
-import { BothIterable, EitherIterable } from '..'
+import type { BothIterable, EitherIterable } from '..'
 
 export class ConcatenatedAsyncIterable<T> implements AsyncIterable<T> {
   static of<T>(...source: (EitherIterable<T>)[]): AsyncIterable<T> {

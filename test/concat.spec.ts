@@ -1,4 +1,4 @@
-import { ConcatenatedAsyncIterable, ConcatenatedIterable } from '../src'
+import { ConcatenatedAsyncIterable, ConcatenatedIterable } from '../src/index.ts'
 import { describe, it } from 'mocha'
 import { equal } from 'node:assert'
 

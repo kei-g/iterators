@@ -1,4 +1,4 @@
 export const name = 'iterators'
 
-export * from './lib'
-export * from './types'
+export * from './lib/index.ts'
+export * from './types/index.ts'

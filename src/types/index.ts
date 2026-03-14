@@ -1,1 +1,1 @@
-export * from './iterators'
+export * from './iterators.ts'

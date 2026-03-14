@@ -1,7 +1,7 @@
 import {
-  BothIterable,
-  EitherIterable,
-  EitherIterator,
+  type BothIterable,
+  type EitherIterable,
+  type EitherIterator,
   isAsyncIterable,
   isIterable,
 } from '..'

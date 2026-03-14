@@ -1,5 +1,5 @@
 import assert, { equal, throws } from 'node:assert'
-import { AsyncCircularSeries, CircularSeries, CountOrPredicate, take, until } from '../src'
+import { AsyncCircularSeries, CircularSeries, type CountOrPredicate, take, until } from '../src/index.ts'
 import { describe, it } from 'mocha'
 
 describe('take', () => {

@@ -1,6 +1,6 @@
 import assert from 'node:assert'
-import { Foo } from './models'
-import { ZippedIterable } from '../src'
+import { Foo } from './models/index.ts'
+import { ZippedIterable } from '../src/index.ts'
 import { describe, it } from 'mocha'
 
 describe('zip', () => {

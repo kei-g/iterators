@@ -1,4 +1,4 @@
-import { EmptyIterable } from '../src'
+import { EmptyIterable } from '../src/index.ts'
 import { describe, it } from 'mocha'
 import { equal } from 'node:assert'
 

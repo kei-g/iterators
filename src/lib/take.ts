@@ -1,4 +1,4 @@
-import { EitherIterable, ReturnableTypeOf, isAsyncIterable, isIterable } from '..'
+import { type EitherIterable, type ReturnableTypeOf, isAsyncIterable, isIterable } from '..'
 
 export type CountOrPredicate<S> =
   bigint |

@@ -1,4 +1,4 @@
-import { EitherIterable } from '..'
+import type { EitherIterable } from '..'
 
 export class AsyncCircularSeries<T> implements AsyncIterable<T> {
   static of<T>(...source: T[]): AsyncIterable<T> {

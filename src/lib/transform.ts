@@ -1,4 +1,4 @@
-import { EitherIterable } from '..'
+import type { EitherIterable } from '..'
 
 export class AsyncTransformer<T, U> implements AsyncIterable<U> {
   constructor(

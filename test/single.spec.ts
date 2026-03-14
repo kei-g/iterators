@@ -1,5 +1,5 @@
 import assert, { equal } from 'node:assert'
-import { SingleIterable } from '../src'
+import { SingleIterable } from '../src/index.ts'
 import { describe, it } from 'mocha'
 
 describe('single', () => {

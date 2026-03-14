@@ -1,5 +1,5 @@
 import assert, { equal } from 'node:assert'
-import { LazyIterable } from '../src'
+import { LazyIterable } from '../src/index.ts'
 import { describe, it } from 'mocha'
 
 describe('lazy', () => {

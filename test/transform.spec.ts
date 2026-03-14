@@ -1,6 +1,6 @@
 import assert from 'node:assert'
-import { AsyncTransformer, Transformer } from '../src'
-import { Foo } from './models'
+import { AsyncTransformer, Transformer } from '../src/index.ts'
+import { Foo } from './models/index.ts'
 import { describe, it } from 'mocha'
 
 describe('async transformer', () => {
