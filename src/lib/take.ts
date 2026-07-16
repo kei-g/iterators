@@ -1,4 +1,4 @@
-import { type EitherIterable, type ReturnableTypeOf, isAsyncIterable, isIterable } from '..'
+import { type EitherIterable, type ReturnableTypeOf, isAsyncIterable, isIterable } from '../index.ts'
 
 export type CountOrPredicate<S> =
   bigint |

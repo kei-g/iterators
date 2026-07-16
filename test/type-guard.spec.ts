@@ -1,4 +1,5 @@
 import { AsyncCircularSeries, isAsyncIterable, isIterable } from '../src/index.ts'
+import { describe, it } from 'node:test'
 import { equal } from 'node:assert'
 
 describe('isAsyncIterable', () => {

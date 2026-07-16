@@ -1,10 +1,12 @@
-import type { EitherIterable } from '..'
+import type { EitherIterable } from '../index.ts'
 
 export class AsyncTransformer<T, U> implements AsyncIterable<U> {
-  constructor(
-    private readonly source: EitherIterable<T>,
-    private readonly selector: (value: T) => PromiseLike<U> | U,
-  ) {
+  private readonly source: EitherIterable<T>
+  private readonly selector: (value: T) => PromiseLike<U> | U
+
+  constructor(source: EitherIterable<T>, selector: (value: T) => PromiseLike<U> | U) {
+    this.selector = selector
+    this.source = source
   }
 
   [Symbol.asyncIterator](): AsyncIterator<U> {
@@ -19,10 +21,12 @@ export class AsyncTransformer<T, U> implements AsyncIterable<U> {
 }
 
 export class Transformer<T, U> implements AsyncIterable<U>, Iterable<U> {
-  constructor(
-    private readonly source: Iterable<T>,
-    private readonly selector: (value: T) => U,
-  ) {
+  private readonly source: Iterable<T>
+  private readonly selector: (value: T) => U
+
+  constructor(source: Iterable<T>, selector: (value: T) => U) {
+    this.selector = selector
+    this.source = source
   }
 
   [Symbol.asyncIterator](): AsyncIterator<U> {

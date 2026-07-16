@@ -1,6 +1,6 @@
 import assert, { equal, throws } from 'node:assert'
 import { AsyncCircularSeries, CircularSeries, type CountOrPredicate, take, until } from '../src/index.ts'
-import { describe, it } from 'mocha'
+import { describe, it } from 'node:test'
 
 describe('take', () => {
   it('take 0 item from async iterable', async () => {

@@ -1,6 +1,6 @@
 import assert, { equal } from 'node:assert'
 import { LazyIterable } from '../src/index.ts'
-import { describe, it } from 'mocha'
+import { describe, it } from 'node:test'
 
 describe('lazy', () => {
   it('async - complete immediately', async () => {

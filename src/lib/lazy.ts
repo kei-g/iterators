@@ -4,9 +4,10 @@ class Complete {
 type Executor<T> = (complete: () => void, next: (value: T) => void) => void
 
 export class LazyIterable<T> implements AsyncIterable<T> {
-  constructor(
-    private readonly executor: Executor<T>
-  ) {
+  private readonly executor: Executor<T>
+
+  constructor(executor: Executor<T>) {
+    this.executor = executor
   }
 
   [Symbol.asyncIterator](): AsyncIterator<T> {
@@ -15,10 +16,12 @@ export class LazyIterable<T> implements AsyncIterable<T> {
 }
 
 class LazyIterator<T> implements AsyncIterator<T> {
+  private readonly executor: Executor<T>
   private readonly pending = [] as (Complete | T)[]
   private readonly resolvers = [] as ((value: Complete | T) => void)[]
 
-  constructor(private readonly executor: Executor<T>) {
+  constructor(executor: Executor<T>) {
+    this.executor = executor
     setImmediate(() => this.onIdle())
   }
 

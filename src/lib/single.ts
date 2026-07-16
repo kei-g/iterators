@@ -1,5 +1,8 @@
 export class SingleIterable<T> implements Iterable<T> {
-  constructor(private readonly value: T) {
+  private readonly value: T
+
+  constructor(value: T) {
+    this.value = value
   }
 
   [Symbol.iterator](): Iterator<T> {
@@ -9,8 +12,10 @@ export class SingleIterable<T> implements Iterable<T> {
 
 export class SingleIterator<T> implements Iterator<T> {
   private iterated = false
+  private readonly value: T
 
-  constructor(private readonly value: T) {
+  constructor(value: T) {
+    this.value = value
   }
 
   next(): IteratorResult<T> {

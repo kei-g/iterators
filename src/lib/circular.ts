@@ -1,11 +1,14 @@
-import type { EitherIterable } from '..'
+import type { EitherIterable } from '../index.ts'
 
 export class AsyncCircularSeries<T> implements AsyncIterable<T> {
   static of<T>(...source: T[]): AsyncIterable<T> {
     return new AsyncCircularSeries(source)
   }
 
-  constructor(private readonly source: EitherIterable<T>) {
+  private readonly source: EitherIterable<T>
+
+  constructor(source: EitherIterable<T>) {
+    this.source = source
   }
 
   [Symbol.asyncIterator](): AsyncIterator<T> {
@@ -22,7 +25,10 @@ export class CircularSeries<T> implements AsyncIterable<T>, Iterable<T> {
     return new CircularSeries(source)
   }
 
-  constructor(private source: Iterable<T>) {
+  private source: Iterable<T>
+
+  constructor(source: Iterable<T>) {
+    this.source = source
   }
 
   [Symbol.asyncIterator](): AsyncIterator<T> {

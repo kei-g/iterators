@@ -1,6 +1,6 @@
 import assert, { equal } from 'node:assert'
 import { SingleIterable } from '../src/index.ts'
-import { describe, it } from 'mocha'
+import { describe, it } from 'node:test'
 
 describe('single', () => {
   it('is able to perform as Iterable', () => {

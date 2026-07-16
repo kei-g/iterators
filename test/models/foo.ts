@@ -7,8 +7,7 @@ export type Foo = {
   name: string
 }
 
-export namespace Foo {
-  export const Members = [
+export const Members = [
     {
       id: 1,
       name: 'foo',
@@ -23,29 +22,28 @@ export namespace Foo {
     },
   ]
 
-  export const compose = (id: number, name: string): Foo => {
+export const compose = (id: number, name: string): Foo => {
     return {
       id,
       name,
     }
   }
 
-  export const idSelector = (foo: Foo): number => foo.id
+export const idSelector = (foo: Foo): number => foo.id
 
-  export const includes = (value: Foo | number | string): boolean =>
+export const includes = (value: Foo | number | string): boolean =>
     typeof value === 'number'
       ? Members.map(idSelector).includes(value)
       : typeof value === 'string'
         ? Members.map(nameSelector).includes(value)
         : Members.some(isEqualTo(value))
 
-  const isEqualTo = (value: Foo) => (foo: Foo) => foo.id === value.id && foo.name === value.name
+const isEqualTo = (value: Foo) => (foo: Foo) => foo.id === value.id && foo.name === value.name
 
-  export const nameSelector = (foo: Foo): string => foo.name
+export const nameSelector = (foo: Foo): string => foo.name
 
-  export const testAsync =
+export const testAsync =
     async (names: AsyncIterable<string>): Promise<void> => {
       for await (const name of names)
-        assert(Foo.Members.map(nameSelector).concat(name))
+        assert(Members.map(nameSelector).concat(name))
     }
-}
